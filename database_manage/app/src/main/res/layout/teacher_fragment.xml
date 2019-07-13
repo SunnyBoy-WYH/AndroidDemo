@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:id="@+id/toolbar_fragment_teacher"
+        app:title="管理老师"
+        >
+    </android.support.v7.widget.Toolbar>
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:layout_width="match_parent"
+        android:id="@+id/student_swipe_refresh"
+        android:layout_above="@+id/l_t"
+        android:layout_below="@+id/toolbar_fragment_teacher"
+        android:layout_height="wrap_content">
+
+    <ListView
+        android:id="@+id/f_t_listview"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:divider="#000"
+
+        android:dividerHeight="1px"
+
+        android:layout_height="200dp">
+
+
+    </ListView>
+    </android.support.v4.widget.SwipeRefreshLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical"
+        android:id="@+id/l_t"
+        android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+
+            android:hint="请输入教师号"
+            android:id="@+id/f_edit_query_teacher_byid"/>
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="请输入姓名"
+            android:id="@+id/f_edit_query_teacher_byname"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="按照条件查询"
+            android:layout_weight="1"
+            android:id="@+id/button_query_teacherbyitem"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:orientation="horizontal">
+
+
+        <Button
+            android:id="@+id/f_t_query_teacher"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+
+            android:text="查询所有教师信息"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/f_t_look_teacher"
+            android:layout_weight="1"
+
+            android:text="查询教师登陆信息"/>
+
+    </LinearLayout>
+    </LinearLayout>
+
+
+
+</RelativeLayout>

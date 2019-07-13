@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/drawerlayout_student"
+
+    android:background="@mipmap/choose"
+    tools:context=".student.activity_student">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_student"
+        android:layout_width="match_parent"
+        app:title="学生端"
+        android:background="@color/colorPrimary"
+        android:layout_height="?attr/actionBarSize">
+
+    </android.support.v7.widget.Toolbar>
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar_student"
+        android:id="@+id/listview_mycourse"
+        android:layout_above="@+id/student_coordlayout"
+        android:layout_weight="10">
+    </ListView>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+        </RelativeLayout>
+        <android.support.design.widget.CoordinatorLayout
+            android:id="@+id/student_coordlayout"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <android.support.design.widget.FloatingActionButton
+                android:src="@drawable/add_course"
+                android:layout_width="wrap_content"
+                android:layout_margin="16dp"
+                android:layout_gravity="bottom|end"
+                app:fabSize="normal"
+                android:scaleType="center"
+                android:id="@+id/floatingbutton_choose_course"
+
+                android:layout_height="wrap_content" />
+
+        </android.support.design.widget.CoordinatorLayout>
+
+
+
+
+
+
+        </RelativeLayout>
+    </FrameLayout>
+    <!--这里将headlayout注释掉是为了监听headlayout的子项-->
+    <android.support.design.widget.NavigationView
+
+        android:id="@+id/navigation_view"
+        android:layout_width="match_parent"
+        app:menu="@menu/nav_menu"
+
+
+        android:layout_gravity = "start"
+        android:background="#fff"
+        android:layout_height="match_parent">
+
+    </android.support.design.widget.NavigationView>
+
+</android.support.v4.widget.DrawerLayout>

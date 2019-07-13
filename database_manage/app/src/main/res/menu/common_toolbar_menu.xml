@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/guanliyuan_backup_add"
+        android:title="增加管理员信息"
+        android:icon="@drawable/hao"
+        app:showAsAction="always"
+        />
+
+</menu>

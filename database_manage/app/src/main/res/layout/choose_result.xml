@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="10dp"
+
+
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="课程名称 "
+            android:textSize="20sp"
+            android:textColor="#ffffff"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="#ffffff"
+            android:id="@+id/result_course_name"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="老师名 "
+            android:textColor="#ffffff"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:textSize="20sp"
+            android:layout_height="wrap_content"
+            android:textColor="#ffffff"
+            android:id="@+id/result_teacher_name"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="上课时间"
+            android:textColor="#ffffff"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:textSize="20sp"
+            android:textColor="#ffffff"
+            android:layout_height="wrap_content"
+            android:id="@+id/result_time"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:textSize="20sp"
+            android:layout_height="wrap_content"
+            android:text="课程学分"
+            android:textColor="#ffffff"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:textSize="20sp"
+            android:textColor="#ffffff"
+            android:layout_height="wrap_content"
+            android:id="@+id/result_weight"/>
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:textSize="20sp"
+            android:layout_height="wrap_content"
+            android:text="上课学期"
+            android:textColor="#ffffff"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:textSize="20sp"
+            android:textColor="#ffffff"
+            android:layout_height="wrap_content"
+            android:id="@+id/result_period"/>
+
+
+    </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="10dp"
+
+
+        />
+
+
+
+
+
+
+</LinearLayout>

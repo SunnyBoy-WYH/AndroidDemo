@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/student_backup_qingchu"
+        android:icon="@drawable/qingchujilu"
+        app:showAsAction="always"
+        android:title="student_backup_qingchu"
+
+        />
+    <item
+        android:id="@+id/student_backup_add"
+        android:title="增加学生信息"
+        android:icon="@drawable/hao"
+        app:showAsAction="ifRoom"
+        />
+    <item
+        android:id="@+id/student_backup_jidianpaixu"
+        android:title="查询绩点并排序"
+        app:showAsAction="never"
+        />
+
+</menu>

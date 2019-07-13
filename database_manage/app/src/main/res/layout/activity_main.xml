@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@mipmap/timg"
+
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:orientation="vertical">
+
+            <ListView
+                android:id="@+id/listview"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="400dp">
+
+            </ListView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:orientation="vertical">
+
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/edit_querybyid"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="按照学号查询学生信息"
+                android:id="@+id/button_query_byid"/>
+            <Button
+                android:id="@+id/button_clear_query"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="清除查询"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/button_add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="增加学生信息"/>
+            <Button
+                android:id="@+id/button_query"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="查询所有学生信息"/>
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/button_add_teacher"
+                android:layout_weight="1"
+                android:text="增加教师信息"/>
+            <Button
+                android:id="@+id/button_query_teacher"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="查询所有教师信息"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="查询学生登录信息"
+                android:layout_weight="1"
+                android:id="@+id/button_query_account"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/button_look_teacher"
+                android:layout_weight="1"
+                android:text="查询教师登陆信息"/>
+
+        </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="查询学生留言"
+                    android:layout_weight="1"
+                    android:id="@+id/button_query_liuyan"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/button_look_sumcourse"
+                    android:layout_weight="1"
+                    android:text="查询课程设置情况"/>
+
+            </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+    </LinearLayout>
+    </LinearLayout>
+
+
+
+</LinearLayout>

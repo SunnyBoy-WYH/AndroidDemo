@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@mipmap/load_new"
+
+
+    tools:context=".start_load.load">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:text="河北大学学生信息系统"
+        android:textSize="30dp" />
+
+    <ImageView
+
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        app:srcCompat="@mipmap/school_new"
+        android:layout_marginTop="60dp"
+        android:layout_gravity="center_horizontal"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="50dp">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="80dp"
+            android:src="@mipmap/geren"/>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:hint="请输入您的学号"
+                android:id="@+id/input_id"
+
+                android:layout_marginRight="50dp"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/edit_load_zhanghao"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    />
+
+            </android.support.design.widget.TextInputLayout>
+
+
+
+
+    </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="80dp"
+                android:layout_gravity="center"
+                android:src="@mipmap/suo"/>
+            <RelativeLayout
+                android:layout_marginRight="50dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <android.support.design.widget.TextInputLayout
+                app:errorEnabled="true"
+                app:counterMaxLength="10"
+                app:counterEnabled="true"
+                android:id="@+id/textinput_p"
+                android:hint="请输入您的密码"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/edit_load_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="20dp"
+                        />
+
+            </android.support.design.widget.TextInputLayout>
+                <ImageButton
+                    android:id="@+id/imagebutton"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="#00000000"
+                    android:layout_alignParentEnd="true"
+                    android:src="@drawable/invisible" />
+                </RelativeLayout>
+
+
+
+
+
+
+
+
+        </LinearLayout>
+    <RelativeLayout
+        android:layout_marginRight="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:id="@+id/checkbox_remember"
+            android:text="记住密码"/>
+
+    </RelativeLayout>
+
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="30dp"
+        >
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/load_radiogroup"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="学生"
+
+                    android:id="@+id/radiobutton_xuesheng"/>
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/radiobutton_teacher"
+                android:text="老师"/>
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/radiobutton_guanliyuan"
+                    android:text="管理员"/>
+
+
+
+        </RadioGroup>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="登录"
+            android:background="@drawable/button_background"
+            android:textColor="#ffffffff"
+
+
+            android:id="@+id/button_load"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="修改密码"
+            android:textColor="#ffffffff"
+            android:background="@drawable/button_background"
+
+
+            android:id="@+id/button_change_password"/>
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

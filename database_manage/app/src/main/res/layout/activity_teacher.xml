@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/drawerlayout_teacher"
+    android:background="@mipmap/teacher"
+    tools:context=".teacher.activity_teacher">
+
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:background="@color/colorPrimary"
+        app:title="教师端"
+        android:id="@+id/toolbar_teacher"
+        android:layout_height="?attr/actionBarSize">
+
+    </android.support.v7.widget.Toolbar>
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:layout_width="match_parent"
+        android:layout_above="@+id/teacher_linearlayout"
+        android:layout_below="@+id/toolbar_teacher"
+        android:id="@+id/teacher_SwipeRefreshLayout"
+        android:layout_height="match_parent">
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/listview_teacher"
+
+            android:dividerHeight="1px"
+            android:divider="#000"
+
+            >
+        </ListView>
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+
+        android:layout_above="@+id/teacher_coordinatorlayout"
+
+        android:id="@+id/teacher_linearlayout"
+        android:orientation="horizontal">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="查看我教的课程信息"
+            android:id="@+id/button_lookmycourse"
+            android:background="@drawable/shape"
+
+            />
+
+    </LinearLayout>
+    <android.support.design.widget.CoordinatorLayout
+        android:id="@+id/teacher_coordinatorlayout"
+        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_height="wrap_content">
+
+    </android.support.design.widget.CoordinatorLayout>
+    </RelativeLayout>
+    </FrameLayout>
+    <android.support.design.widget.NavigationView
+        android:id="@+id/navigation_view_t"
+        android:layout_width="match_parent"
+        app:menu="@menu/nav_menu_teacher"
+
+        android:layout_gravity = "start"
+        android:background="#fff"
+        android:layout_height="match_parent">
+
+    </android.support.design.widget.NavigationView>
+
+
+
+
+</android.support.v4.widget.DrawerLayout>

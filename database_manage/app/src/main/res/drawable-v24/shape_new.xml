@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <!-- 圆角设置 -->
+    <corners
+        android:radius="26dip"
+        android:topLeftRadius="26dp"
+        android:topRightRadius="26dp"
+        android:bottomLeftRadius="26dp"
+        android:bottomRightRadius="26dp"/>
+    <!-- 边框宽度及颜色 -->
+    <stroke android:width="2px" android:color="#B4C4CE" />
+    <!-- 空间内部填充 -->    <solid android:color="#B4C4CE" />
+    <!-- 留空 -->      <padding          android:left="10dp"
+    android:top="10dp"          android:right="10dp"
+    android:bottom="10dp"/>
+    <!-- 渐变色
+    startColor,开始的颜色，endcolor渐变最后的颜色,centerColor中间的颜色
+    style有三种,linear（线性）,radial（放射性）,sweep（扫描性)
+    linear从一个方向到另一个方向
+    当angle=0时，渐变色是从左向右。
+    	然后渐变方向随angle增加而逆时针方向转，当angle=270时为从上往下,且只有type为center时有效 –>
+    		radial 从一个点开始的渐变
+    			android:centerX    Float.(0 - 1.0) 渐变点x轴相对位置。
+    			android:centerY!    Float.(0 - 1.0) 渐变点Y轴相对位置。
+    			这两个属性只有在type不为linear情况下起作用。
+    			android:useLevel="true| false"默认为false,且只有当其为false时才有渐变效果     -->
+    <gradient
+        android:startColor="#B4C4CE"
+        android:centerColor="#B4C4CE"
+        android:endColor="#B4C4CE"
+        android:useLevel="true"
+        android:angle="270"
+        android:type="radial"
+        android:centerX="0"
+        android:centerY="0"
+        android:gradientRadius="90"/>
+    <!-- 描边 -->
+    <!--<stroke-->
+   <!--android:width="2dp"-->
+
+    <!--android:color="color"-->
+
+
+    <!--android:dashWidth="2dp"-->
+        <!--android:dashGap="2dp" />-->
+
+</shape>
+

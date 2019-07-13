@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:id="@+id/toolbar_fragment_common"
+        app:title="管理员设置"
+        >
+    </android.support.v7.widget.Toolbar>
+    <ListView
+        android:id="@+id/f_c_listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="#000"
+        android:dividerHeight="1px"
+        android:layout_below="@+id/toolbar_fragment_common"
+        android:layout_above="@+id/ll1">
+
+    </ListView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ll1"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="查询留言"
+            android:layout_weight="1"
+            android:id="@+id/f_query_liuyan"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/f_look_sumcourse"
+            android:layout_weight="1"
+            android:text="查询课程设置情况"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/look_admin"
+            android:text="管理员信息"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

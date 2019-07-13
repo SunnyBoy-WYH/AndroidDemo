@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@mipmap/liuyan_new"
+    tools:context=".student.submit_message">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
+        android:textSize="30dp"
+        android:text="留言"/>
+    <EditText android:text=""
+        android:layout_marginTop="50dp"
+        android:id="@+id/et_message"
+
+        android:lines="5"
+
+        android:gravity="top"
+
+        android:hint="请输入您的反馈意见(字数500以内)！"
+        android:textSize="20sp"
+        android:textColor="#000000"
+
+        android:layout_width="fill_parent"
+
+        android:layout_height="wrap_content">
+
+    </EditText>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:text="提交"
+        android:background="@mipmap/color"
+        android:id="@+id/button_submit"
+        />
+
+</LinearLayout>

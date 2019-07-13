@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/load"
+    tools:context=".teacher.student_choose_course_info">
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/listview_student_choose_info"
+        android:layout_above="@+id/text_tongji">
+
+    </ListView>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_above="@+id/ln"
+        android:textSize="20sp"
+
+        android:textColor="#000"
+        android:id="@+id/text_tongji"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ln"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="按照班级排序"
+            android:background="@drawable/shape1"
+            android:id="@+id/button_groupby_banji"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:background="@drawable/shape1"
+            android:layout_height="wrap_content"
+            android:id="@+id/orderby_score"
+            android:layout_marginLeft="10sp"
+            android:text="按照成绩排序"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:background="@drawable/shape1"
+            android:layout_height="wrap_content"
+            android:id="@+id/orderby_name"
+            android:layout_marginLeft="10sp"
+            android:text="按照姓名排序"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="平均成绩"
+            android:background="@drawable/shape1"
+            android:layout_marginLeft="10sp"
+            android:id="@+id/button_average_score"/>
+    </LinearLayout>
+
+
+</RelativeLayout>
