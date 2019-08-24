@@ -1,11 +1,9 @@
 package com.example.database_manage.administractor;
 
-import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -19,7 +17,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
@@ -28,7 +25,7 @@ import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
 
-import com.example.database_manage.Common.Common_toolbarColor;
+import com.example.database_manage.utils.Common_toolbarColor;
 import com.example.database_manage.R;
 import com.example.database_manage.database.CommonDatabase;
 

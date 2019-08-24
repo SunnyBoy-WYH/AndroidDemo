@@ -22,14 +22,13 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
-import com.example.database_manage.Common.Common_toolbarColor;
+import com.example.database_manage.utils.Common_toolbarColor;
 import com.example.database_manage.R;
 import com.example.database_manage.database.CommonDatabase;
 
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class teacher_Fragment extends Fragment {

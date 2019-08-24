@@ -21,23 +21,19 @@ public class submit_message extends AppCompatActivity {
         Button button_submit = findViewById(R.id.button_submit);
 
 
-
         button_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(editText.getText().toString().equals(""))
-                {
-                    Toast.makeText(submit_message.this,"留言不可以为空",Toast.LENGTH_SHORT).show();
-                }
-                else
-                {
+                if (editText.getText().toString().equals("")) {
+                    Toast.makeText(submit_message.this, "留言不可以为空", Toast.LENGTH_SHORT).show();
+                } else {
                     ContentValues contentValues = new ContentValues();
-                    contentValues.put("student_id",getIntent().getStringExtra("student_id"));
-                    contentValues.put("message",editText.getText().toString());
+                    contentValues.put("student_id", getIntent().getStringExtra("student_id"));
+                    contentValues.put("message", editText.getText().toString());
 
-                    new CommonDatabase().getSqliteObject(submit_message.this,"test_db").
-                            insert("message",null,contentValues);
-                    Toast.makeText(submit_message.this,"留言成功！",Toast.LENGTH_SHORT).show();
+                    new CommonDatabase().getSqliteObject(submit_message.this, "test_db").
+                            insert("message", null, contentValues);
+                    Toast.makeText(submit_message.this, "留言成功！", Toast.LENGTH_SHORT).show();
                     finish();
                 }
 

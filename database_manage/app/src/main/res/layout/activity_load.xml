@@ -7,7 +7,6 @@
     android:orientation="vertical"
     android:background="@mipmap/load_new"
 
-
     tools:context=".start_load.load">
 
     <TextView
@@ -53,8 +52,6 @@
                     />
 
             </android.support.design.widget.TextInputLayout>
-
-
 
 
     </LinearLayout>
@@ -103,12 +100,6 @@
                 </RelativeLayout>
 
 
-
-
-
-
-
-
         </LinearLayout>
     <RelativeLayout
         android:layout_marginRight="50dp"
@@ -122,9 +113,6 @@
             android:text="记住密码"/>
 
     </RelativeLayout>
-
-
-
 
 
     <LinearLayout
@@ -157,11 +145,7 @@
                     android:id="@+id/radiobutton_guanliyuan"
                     android:text="管理员"/>
 
-
-
         </RadioGroup>
-
-
     </LinearLayout>
 
     <LinearLayout

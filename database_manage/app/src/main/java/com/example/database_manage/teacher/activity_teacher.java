@@ -32,14 +32,13 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.database_manage.Common.Common_methon;
-import com.example.database_manage.Common.Common_toolbarColor;
+import com.example.database_manage.utils.Common_methon;
+import com.example.database_manage.utils.Common_toolbarColor;
 import com.example.database_manage.R;
 import com.example.database_manage.database.CommonDatabase;
 import com.example.database_manage.database.image_store;
 import com.example.database_manage.start_load.load;
-import com.example.database_manage.student.about_me;
-import com.example.database_manage.student.activity_student;
+import com.example.database_manage.utils.alertDialog_builder;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -50,133 +49,95 @@ import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 /*
-    教师端
+    教师端主界面
  */
 
 public class activity_teacher extends AppCompatActivity {
-    private  ListView listView ;
-    private  SQLiteDatabase db ;
+
+    //用于显示信息的列表listview
+    private ListView listView;
+
+    //数据库对象，用来操作数据库
+    private SQLiteDatabase db;
+
+    //侧滑
     private DrawerLayout drawerLayout;
+
+    //记录状态
     private String state = "";
+
+    //用于下拉刷新
     private SwipeRefreshLayout swipeRefreshLayout;
+
+    //用于接收的intent
     private Intent receive_intent;
+
+    //用于替代ActionBar的toolbar
     private Toolbar toolbar;
+
+    //触发查看我的课程信息的button
     private Button button_look_mycourse;
+
+    //圆形imageview 用于显示头像
     private CircleImageView circleImageView;
+
+    //初始自带的actionbar
     private ActionBar actionBar;
+
+    //
     private NavigationView navigationView;
+
+    //对话框类
     private AlertDialog.Builder builder;
+
+    //navigationView的顶部view
     private View headview;
+
+    //登录成功后，侧滑菜单显示的用户身份标识
     private TextView textView_welcome;
+
+    //以下用于点击头像拍照并保存到圆形imageview功能
     private Uri imageUri;
     private static final int TAKE_PHOTO = 1;
     private image_store imageStore;
-
-
+    private Bitmap bitmap_temp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_teacher);
 
-        //设置标题栏与状态栏颜色保持一致
-        new Common_toolbarColor().toolbarColorSet(activity_teacher.this);
+        init();
 
-        //获取数据库对象
-        db = new CommonDatabase().getSqliteObject(activity_teacher.this,"test_db");
+        //去查找该用户有没有头像
+        bitmap_temp = imageStore.getBmp(db, receive_intent.getStringExtra("teacher_id"));
 
-        receive_intent = getIntent();
-
-        swipeRefreshLayout = findViewById(R.id.teacher_SwipeRefreshLayout);
-
-        listView = findViewById(R.id.listview_teacher);
-
-        button_look_mycourse = findViewById(R.id.button_lookmycourse);
-
-        //NavigationView绑定及监听子项
-        navigationView = findViewById(R.id.navigation_view_t);
-
-        headview = navigationView.inflateHeaderView(R.layout.headlayout_teacher);
-
-        textView_welcome = headview.findViewById(R.id.welcome_textview_teacher);
-
-        circleImageView = headview.findViewById(R.id.circleimage_teacher);
-
-        //表示欢迎的textview
-        textView_welcome.setText(receive_intent.getStringExtra("teacher_id"));
-
-        //头像初始化
-
-        imageStore = new image_store();
-
-        Bitmap bitmap_temp = imageStore.getBmp(db,receive_intent.getStringExtra("teacher_id"));
-        if(bitmap_temp!=null)
-        {
+        //如果有头像，那就把查到的这个放大头像
+        if (bitmap_temp != null) {
             circleImageView.setImageBitmap(bitmap_temp);
         }
-
-
-        //设置toolbar
-        toolbar = findViewById(R.id.toolbar_teacher);
-        setSupportActionBar(toolbar);
-
-        //actionbar设置
-        actionBar = getSupportActionBar();
-        if(actionBar!=null)
-        {
-            actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setHomeAsUpIndicator(R.drawable.a);
-        }
-        //DrawerLayout设置
-        drawerLayout = findViewById(R.id.drawerlayout_teacher);
-
-
-
-
+        //监听navigation
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                switch (menuItem.getItemId())
-                {
+                switch (menuItem.getItemId()) {
                     case R.id.nav_menu_myinfo_t:
                         Intent intent_about = new Intent(activity_teacher.this, teacher_about_me.class);
                         intent_about.putExtra("teacher_id", receive_intent.getStringExtra("teacher_id"));
                         startActivity(intent_about);
 
                         break;
+
+                    //修改账户
                     case R.id.nav_menu_changeacc_t:
-                        builder = new AlertDialog.Builder(activity_teacher.this);
 
-                        builder.setIcon(R.drawable.ic_launcher_background);
-                        //    设置Title的内容
-                        builder.setTitle("提示");
-                        //    设置Content来显示一个信息
-                        builder.setMessage("您确定要切换账号吗？");
-                        //    设置一个PositiveButton
-                        builder.setPositiveButton("确定", new DialogInterface.OnClickListener()
-                        {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which)
-                            {
-                                startActivity(new Intent(activity_teacher.this, load.class));
-                                finish();
-                            }
-                        });
-                        //    设置一个NegativeButton
-                        builder.setNegativeButton("取消", new DialogInterface.OnClickListener()
-                        {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which)
-                            {
-
-                            }
-                        });
-
+                        builder = new alertDialog_builder(activity_teacher.this).build();
                         //    显示出该对话框
+
                         builder.show();
-
-
                         break;
+                    //查看留言
                     case R.id.nav_menu_lookliuyan:
                         Cursor cursor_look = db.query("message", null, null, null, null, null, null);
 
@@ -187,10 +148,7 @@ public class activity_teacher extends AppCompatActivity {
                             ArrayList<Map<String, String>> arrayList_mycourse = new ArrayList<Map<String, String>>();
                             while (cursor_look.moveToNext()) {
                                 Map<String, String> map = new HashMap<String, String>();
-
                                 map.put("message", cursor_look.getString(cursor_look.getColumnIndex("message")));
-
-
                                 arrayList_mycourse.add(map);
 
                             }
@@ -198,8 +156,6 @@ public class activity_teacher extends AppCompatActivity {
                             SimpleAdapter simpleAdapter = new SimpleAdapter(activity_teacher.this, arrayList_mycourse, R.layout.list_item_message_t_look,
                                     new String[]{"message"}, new int[]{R.id.text});
                             listView.setAdapter(simpleAdapter);
-
-
 
                         }
 
@@ -217,26 +173,21 @@ public class activity_teacher extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 /****点击老师拥有的课程的****/
 
-                    //获取用户-老师的名字
-                    String teacher_name = "";
-                    Cursor cursor_look_for_id = db.query("teacher", null, "teacher_id =?", new String[]{receive_intent.getStringExtra("teacher_id")}, null, null, null);
-                    while (cursor_look_for_id.moveToNext()) {
-                        teacher_name = cursor_look_for_id.getString(cursor_look_for_id.getColumnIndex("name"));
-                    }
+                //获取用户-老师的名字
+                String teacher_name = "";
+                Cursor cursor_look_for_id = db.query("teacher", null, "teacher_id =?", new String[]{receive_intent.getStringExtra("teacher_id")}, null, null, null);
+                while (cursor_look_for_id.moveToNext()) {
+                    teacher_name = cursor_look_for_id.getString(cursor_look_for_id.getColumnIndex("name"));
+                }
 
-                    HashMap<String, Object> map_item = (HashMap<String, Object>) listView.getItemAtPosition(position);
-                    //获取选择这个子项的课程名称 ，去查找这个课程下的学生
-                    String course_name = map_item.get("course_name") + "";
+                HashMap<String, Object> map_item = (HashMap<String, Object>) listView.getItemAtPosition(position);
+                //获取选择这个子项的课程名称 ，去查找这个课程下的学生
+                String course_name = map_item.get("course_name") + "";
 
-                    Intent intent_info = new Intent(activity_teacher.this,student_choose_course_info.class);
-                    intent_info.putExtra("course_name",course_name);
-                    intent_info.putExtra("teacher_name",teacher_name);
-                    startActivity(intent_info);
-
-
-
-
-
+                Intent intent_info = new Intent(activity_teacher.this, student_choose_course_info.class);
+                intent_info.putExtra("course_name", course_name);
+                intent_info.putExtra("teacher_name", teacher_name);
+                startActivity(intent_info);
 
 
             }
@@ -255,9 +206,7 @@ public class activity_teacher extends AppCompatActivity {
                         try {
                             Thread.sleep(1000);
 
-                        }
-                        catch (InterruptedException e)
-                        {
+                        } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
                         runOnUiThread(new Runnable() {
@@ -274,8 +223,7 @@ public class activity_teacher extends AppCompatActivity {
         });
 
 
-
-
+        //按钮监听器
         View.OnClickListener listener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -319,23 +267,72 @@ public class activity_teacher extends AppCompatActivity {
 
     }
 
+    //初始化组件
+    public void init() {
+
+
+        //设置标题栏与状态栏颜色保持一致
+        new Common_toolbarColor().toolbarColorSet(activity_teacher.this);
+
+        //设置toolbar
+        toolbar = findViewById(R.id.toolbar_teacher);
+        setSupportActionBar(toolbar);
+
+        //actionbar设置
+        actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setHomeAsUpIndicator(R.drawable.a);
+        }
+
+
+        //DrawerLayout设置
+        drawerLayout = findViewById(R.id.drawerlayout_teacher);
+
+        //获取数据库对象
+        db = new CommonDatabase().getSqliteObject(activity_teacher.this, "test_db");
+
+        receive_intent = getIntent();
+
+        swipeRefreshLayout = findViewById(R.id.teacher_SwipeRefreshLayout);
+
+        listView = findViewById(R.id.listview_teacher);
+
+        button_look_mycourse = findViewById(R.id.button_lookmycourse);
+
+        //NavigationView绑定及监听子项
+        navigationView = findViewById(R.id.navigation_view_t);
+
+        headview = navigationView.inflateHeaderView(R.layout.headlayout_teacher);
+
+        textView_welcome = headview.findViewById(R.id.welcome_textview_teacher);
+
+        circleImageView = headview.findViewById(R.id.circleimage_teacher);
+
+        //表示欢迎的textview
+        textView_welcome.setText(receive_intent.getStringExtra("teacher_id"));
+
+        //头像初始化
+
+        imageStore = new image_store();
+
+    }
+
+    //点击头像进行拍照的回调函数
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        switch (requestCode)
-        {
+        switch (requestCode) {
             case TAKE_PHOTO:
-                if(resultCode ==RESULT_OK)
-                {
-                    try{
+                if (resultCode == RESULT_OK) {
+                    try {
                         //将拍摄的照片显示到头像中
                         Bitmap bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(imageUri));
                         circleImageView.setImageBitmap(bitmap);
 
 //更新本人资源表
-                        Bitmap bitmap1 = new Common_methon().compressBoundsBitmap(activity_teacher.this,imageUri,200,200);
-                        imageStore.update(bitmap1,db,receive_intent.getStringExtra("teacher_id"));
-                    }catch (FileNotFoundException e)
-                    {
+                        Bitmap bitmap1 = new Common_methon().compressBoundsBitmap(activity_teacher.this, imageUri, 200, 200);
+                        imageStore.update(bitmap1, db, receive_intent.getStringExtra("teacher_id"));
+                    } catch (FileNotFoundException e) {
                         e.printStackTrace();
 
                     }
@@ -349,8 +346,7 @@ public class activity_teacher extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId())
-        {
+        switch (item.getItemId()) {
             case android.R.id.home:
                 drawerLayout.openDrawer(GravityCompat.START);
 
@@ -360,8 +356,8 @@ public class activity_teacher extends AppCompatActivity {
         }
         return true;
     }
-    public void look_course()
-    {
+
+    public void look_course() {
         String teacher_name = "";
         //去老师信息表中根据老师的id查找它的姓名
         Cursor cursor_look_for_id = db.query("teacher", null, "teacher_id =?", new String[]{receive_intent.getStringExtra("teacher_id")}, null, null, null);
@@ -390,7 +386,7 @@ public class activity_teacher extends AppCompatActivity {
             }
             ////////////////////
             CoordinatorLayout teacher_coordinatorlayout = findViewById(R.id.teacher_coordinatorlayout);
-            Snackbar.make(teacher_coordinatorlayout,"您共有"+arrayList_mycourse.size()+"门课程",Snackbar.LENGTH_LONG)
+            Snackbar.make(teacher_coordinatorlayout, "您共有" + arrayList_mycourse.size() + "门课程", Snackbar.LENGTH_LONG)
                     .setAction("好的", new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -398,9 +394,6 @@ public class activity_teacher extends AppCompatActivity {
                         }
                     })
                     .show();
-
-
-
 
             //设置适配器
             SimpleAdapter simpleAdapter = new SimpleAdapter(activity_teacher.this, arrayList_mycourse, R.layout.list_item_teacher_mycourse,

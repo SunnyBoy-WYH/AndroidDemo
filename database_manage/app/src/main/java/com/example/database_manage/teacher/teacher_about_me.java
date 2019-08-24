@@ -12,6 +12,9 @@ import android.widget.TextView;
 import com.example.database_manage.R;
 import com.example.database_manage.database.CommonDatabase;
 
+/*
+    用于展示教师信息
+ */
 public class teacher_about_me extends AppCompatActivity implements View.OnClickListener {
 
     private SQLiteDatabase db;
@@ -23,17 +26,23 @@ public class teacher_about_me extends AppCompatActivity implements View.OnClickL
     private TextView t_aboutme_phone;
     private TextView t_aboutme_college;
     private Button button_finish_about_t;
+
+    //用于传递信息
     private Intent receive_intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //绑定xml配置文件
         setContentView(R.layout.activity_teacher_about_me);
+
+        //初始化组件
         initView();
 
-        Cursor cursor_about = db.query("teacher",null,"teacher_id = ?",new String[]{receive_intent.getStringExtra("teacher_id")},null,null,null);
-        while(cursor_about.moveToNext())
-        {
+        //去查找目前登录老师的信息
+        Cursor cursor_about = db.query("teacher", null, "teacher_id = ?", new String[]{receive_intent.getStringExtra("teacher_id")}, null, null, null);
+        while (cursor_about.moveToNext()) {
             t_aboutme_id.setText(cursor_about.getString(cursor_about.getColumnIndex("teacher_id")));
             t_aboutme_name.setText(cursor_about.getString(cursor_about.getColumnIndex("name")));
             t_aboutme_zhicheng.setText(cursor_about.getString(cursor_about.getColumnIndex("level")));
@@ -45,12 +54,12 @@ public class teacher_about_me extends AppCompatActivity implements View.OnClickL
         }
 
 
-
     }
 
+    //初始化组件的方法
     private void initView() {
 
-        db = new CommonDatabase().getSqliteObject(teacher_about_me.this,"test_db");
+        db = new CommonDatabase().getSqliteObject(teacher_about_me.this, "test_db");
 
         t_aboutme_id = (TextView) findViewById(R.id.t_aboutme_id);
         t_aboutme_name = (TextView) findViewById(R.id.t_aboutme_name);
@@ -61,16 +70,17 @@ public class teacher_about_me extends AppCompatActivity implements View.OnClickL
         t_aboutme_college = (TextView) findViewById(R.id.t_aboutme_college);
 
 
-
         button_finish_about_t = (Button) findViewById(R.id.button_finish_about_t);
 
         button_finish_about_t.setOnClickListener(this);
 
+        //获取上个activity穿过来的intent
         receive_intent = getIntent();
 
 
     }
 
+    //用于点击返回后销毁当前活动
     @Override
     public void onClick(View v) {
         switch (v.getId()) {

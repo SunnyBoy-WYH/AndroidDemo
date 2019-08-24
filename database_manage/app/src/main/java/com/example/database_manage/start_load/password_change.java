@@ -26,29 +26,25 @@ import static com.example.database_manage.database.MD5Demo.md5;
  */
 
 public class password_change extends AppCompatActivity {
-    SQLiteDatabase db;
-    RadioGroup load_radiogroup;
-    EditText edit_account;
-    EditText edit_oldpassword ;
-    EditText edit_newpassword ;
-    EditText edit_confirm ;
-    String true_password ="";
-    String state = "";
+    private  SQLiteDatabase db;
+    private  Button button_change;
+    private  RadioGroup load_radiogroup;
+    private  EditText edit_account;
+    private  EditText edit_oldpassword ;
+    private  EditText edit_newpassword ;
+    private  EditText edit_confirm ;
+    private  String true_password ="";
+    private  String state = "";
+    private  TextInputLayout textInputLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_password_change);
-        Button button_change = findViewById(R.id.button_change_password_ok);
 
-        edit_account = findViewById(R.id.et_c_account);
-        edit_oldpassword = findViewById(R.id.et_c_oldpassword);
-        edit_newpassword = findViewById(R.id.et_c_newpassword);
-        final TextInputLayout textInputLayout = findViewById(R.id.textinput_newpassword);
-        edit_confirm = findViewById(R.id.et_c_confirm_newpassword);
-        load_radiogroup= findViewById(R.id.password_radiogroup);
+        initView();
 
-        db = new CommonDatabase().getSqliteObject(password_change.this,"test_db");
-
+        //当选择不同身份时，state标记选择的身份
         load_radiogroup.setOnCheckedChangeListener(
                 new RadioGroup.OnCheckedChangeListener() {
                     @Override
@@ -56,11 +52,12 @@ public class password_change extends AppCompatActivity {
                         switch (group.getCheckedRadioButtonId())
                         {
                             case R.id.radiobutton_xuesheng_p:
-                                state="student";
 
+                                state="student";
 
                                 break;
                             case R.id.radiobutton_teacher_p:
+
                                 state = "teacher";
                                 break;
                         }
@@ -69,6 +66,7 @@ public class password_change extends AppCompatActivity {
                     }
                 });
 
+        //为按钮设置监听器
         button_change.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -86,14 +84,12 @@ public class password_change extends AppCompatActivity {
                         Toast.makeText(password_change.this,"您还没有说明身份！",Toast.LENGTH_SHORT).show();
                     }
 
-
-
-                //如果有任何一项为空
-
             }
 
 
         });
+
+        //为新密码进行检查
         edit_newpassword.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -122,6 +118,27 @@ public class password_change extends AppCompatActivity {
 
 
     }
+
+    //绑定组件
+    public void initView()
+    {
+        button_change = findViewById(R.id.button_change_password_ok);
+
+        edit_account = findViewById(R.id.et_c_account);
+
+        edit_oldpassword = findViewById(R.id.et_c_oldpassword);
+
+        edit_newpassword = findViewById(R.id.et_c_newpassword);
+
+        textInputLayout = findViewById(R.id.textinput_newpassword);
+
+        edit_confirm = findViewById(R.id.et_c_confirm_newpassword);
+
+        load_radiogroup= findViewById(R.id.password_radiogroup);
+
+        db = new CommonDatabase().getSqliteObject(password_change.this,"test_db");
+    }
+    //检验正确性
     public  void  check(String string)
     {
         if(edit_account.getText().toString().equals("")||edit_confirm.getText().toString().equals("")||edit_newpassword.getText().toString().equals("")||edit_oldpassword.getText().toString().equals(""))
@@ -143,6 +160,8 @@ public class password_change extends AppCompatActivity {
                 {
                     true_password = cursor.getString(cursor.getColumnIndex("password"));
                 }
+
+                //如果原密码错误
                 if(!md5(edit_oldpassword.getText().toString()).equals(true_password))
                 {
                     Toast.makeText(password_change.this,"原密码错误！",Toast.LENGTH_SHORT).show();
@@ -160,7 +179,9 @@ public class password_change extends AppCompatActivity {
                         values.put("password",md5(edit_newpassword.getText().toString()));
                         //更新数据库
                         db.update(string, values, "account = ? ", new String[]{edit_account.getText().toString()});
+
                         Toast.makeText(password_change.this,"修改成功！",Toast.LENGTH_SHORT).show();
+
                         startActivity(new Intent(password_change.this, load.class));
                     }
                 }

@@ -1,5 +1,8 @@
 package com.example.database_manage.student;
 
+/*
+item主要设计选课时的选中状态以及信息
+ */
 public class item {
     String course_name;
     String course_time;
@@ -9,20 +12,7 @@ public class item {
     Boolean ischeck;
 
 
-    public String getCourse_weight() {
-        return course_weight;
-    }
-
-    public void setCourse_weight(String course_weight)
-    {
-        this.course_weight = course_weight;
-    }
-
-
-
-
-    public  item(String course_name, String course_time, String course_period,String teacher_name,String course_weight)
-    {
+    public item(String course_name, String course_time, String course_period, String teacher_name, String course_weight) {
         this.course_name = course_name;
         this.course_time = course_time;
         this.course_period = course_period;
@@ -31,6 +21,11 @@ public class item {
         this.ischeck = false;
 
     }
+
+    public String getCourse_weight() {
+        return course_weight;
+    }
+
     public String getTeacher_name() {
         return teacher_name;
     }
@@ -38,6 +33,7 @@ public class item {
     public void setTeacher_name(String teacher_name) {
         this.teacher_name = teacher_name;
     }
+
     public String getCourse_name() {
         return course_name;
     }
@@ -54,16 +50,8 @@ public class item {
         this.course_name = course_name;
     }
 
-    public void setCourse_time(String course_time) {
-        this.course_time = course_time;
-    }
-
     public Boolean getIscheck() {
         return ischeck;
-    }
-
-    public void setCourse_period(String course_period) {
-        this.course_period = course_period;
     }
 
     public void setIscheck(Boolean ischeck) {
